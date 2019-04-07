@@ -5,11 +5,18 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         Map<String, Double> assignment = new TreeMap<>();
-        assignment.put("x", 8.0);
+        assignment.put("x", 2.0);
         assignment.put("y", 12.0);
         assignment.put("z", 2.0);
 
-        Expression e = new Plus("x", new Div("y", 6));
+
+        //((2x + y) * 4)^x
+        Expression e = new Pow(new Mult(new Plus(new Mult(new Num(2), new Var("x")),
+                new Var("y")), new Num(4)), new Var("x"));
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
+        e = new Plus("x", new Div("y", 6));
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
@@ -33,11 +40,9 @@ public class Test {
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
-
         e = new Cos(Math.PI);
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
-
 
     }
 }

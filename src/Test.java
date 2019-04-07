@@ -7,10 +7,16 @@ public class Test {
         Map<String, Double> assignment = new TreeMap<>();
         assignment.put("x", 8.0);
         assignment.put("y", 12.0);
-        assignment.put("z", 0.0);
+        assignment.put("z", 2.0);
 
         Expression e = new Plus("x", new Div("y", 6));
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
+
+
+        e = new Pow("z", new Pow(2, 3));
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
     }
 }

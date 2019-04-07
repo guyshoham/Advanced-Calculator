@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Plus extends BinaryExpression implements Expression {
 
     private Expression left, right;
@@ -8,22 +6,6 @@ public class Plus extends BinaryExpression implements Expression {
         super(left, right);
         this.left = left;
         this.right = right;
-    }
-
-    @Override
-    protected double calculate(Expression expression) throws Exception {
-        return expression.getLeft().evaluate() + expression.getRight().evaluate();
-    }
-
-    public double evaluate() throws Exception {
-        return left.evaluate() + right.evaluate();
-    }
-
-    @Override
-    public Expression assign(String var, Expression expression) {
-        Expression e1 = left.assign(var, expression);
-        Expression e2 = right.assign(var, expression);
-        return new Plus(e1, e2);
     }
 
     public Plus(String left, Expression right) {
@@ -48,6 +30,22 @@ public class Plus extends BinaryExpression implements Expression {
 
     public Plus(double left, double right) {
         this(new Num(left), new Num(right));
+    }
+
+    @Override
+    protected double calculate(Expression expression) throws Exception {
+        return expression.getLeft().evaluate() + expression.getRight().evaluate();
+    }
+
+    public double evaluate() throws Exception {
+        return left.evaluate() + right.evaluate();
+    }
+
+    @Override
+    public Expression assign(String var, Expression expression) {
+        Expression e1 = left.assign(var, expression);
+        Expression e2 = right.assign(var, expression);
+        return new Plus(e1, e2);
     }
 
     @Override

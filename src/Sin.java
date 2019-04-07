@@ -1,36 +1,36 @@
-public class Neg extends UnaryExpression implements Expression {
+public class Sin extends UnaryExpression implements Expression {
 
     private Expression expression;
 
-    public Neg(Expression expression) {
+    public Sin(Expression expression) {
         super(expression);
         this.expression = expression;
     }
 
-    public Neg(String expression) {
+    public Sin(String expression) {
         this(new Var(expression));
     }
 
-    public Neg(double expression) {
+    public Sin(double expression) {
         this(new Num(expression));
     }
 
     @Override
     protected double calculate(Expression expression) throws Exception {
-        return -1 * expression.getLeft().evaluate();
+        return Math.sin(expression.getLeft().evaluate());
     }
 
     public double evaluate() throws Exception {
-        return -1 * expression.evaluate();
+        return Math.sin(expression.evaluate());
     }
 
     @Override
     public Expression assign(String var, Expression expression) {
-        return new Neg(expression.assign(var, expression));
+        return new Sin(expression.assign(var, expression));
     }
 
     @Override
     public String toString() {
-        return "(-" + expression.toString() + ")";
+        return "sin(" + expression.toString() + ")";
     }
 }

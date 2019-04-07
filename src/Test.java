@@ -29,5 +29,15 @@ public class Test {
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
+        e = new Sin(Math.toRadians(90));
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
+
+        e = new Cos(Math.PI);
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
+
     }
 }

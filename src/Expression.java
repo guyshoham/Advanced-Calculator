@@ -39,4 +39,8 @@ public interface Expression {
      * current expression).
      */
     Expression assign(String var, Expression expression);
+
+    Expression getLeft();
+
+    Expression getRight();
 }

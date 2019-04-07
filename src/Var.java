@@ -36,8 +36,19 @@ public class Var implements Expression {
         if (this.var.equals(var)) {
             return expression;
         } else {
-            return null;
+            return this;
         }
+    }
+
+    @Override
+    public Expression getLeft() {
+        return new Var(var);
+
+    }
+
+    @Override
+    public Expression getRight() {
+        return new Var(var);
     }
 
     @Override

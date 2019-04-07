@@ -31,7 +31,23 @@ public class Num implements Expression {
     }
 
     @Override
+    public Expression getLeft() {
+        return new Num(num);
+    }
+
+    @Override
+    public Expression getRight() {
+        return new Num(num);
+    }
+
+    @Override
     public String toString() {
-        return String.valueOf(num);
+        if (num % 1.0 == 0) {
+            int retVal = (int) num;
+            return String.valueOf(retVal);
+        }else {
+            double retVal = num;
+            return String.valueOf(retVal);
+        }
     }
 }

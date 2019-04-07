@@ -5,6 +5,7 @@ public class Minus extends BinaryExpression implements Expression {
     private Expression left, right;
 
     public Minus(Expression left, Expression right) {
+        super(left, right);
         this.left = left;
         this.right = right;
     }
@@ -34,40 +35,20 @@ public class Minus extends BinaryExpression implements Expression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return 0;
+    protected double calculate(Expression expression) throws Exception {
+        return expression.getLeft().evaluate() - expression.getRight().evaluate();
     }
 
-    @Override
     public double evaluate() throws Exception {
-        return 0;
-    }
-
-    @Override
-    public List<String> getVariables() {
-        return getVariables(left, right);
+        return left.evaluate() - right.evaluate();
     }
 
     @Override
     public Expression assign(String var, Expression expression) {
-        List<String> variables;
-        if (!this.isContainVar(var, this)) {
-            return this;
-        } else {
-            variables = left.getVariables();
-            for (String variable : variables) {
-                if (variable.equals(var)) {
-                    left = left.assign(var, expression);
-                }
-            }
-            variables = right.getVariables();
-            for (String variable : variables) {
-                if (variable.equals(var)) {
-                    right = right.assign(var, expression);
-                }
-            }
-            return new Plus(left, right);
-        }    }
+        Expression e1 = left.assign(var, expression);
+        Expression e2 = right.assign(var, expression);
+        return new Minus(e1, e2);
+    }
 
     @Override
     public String toString() {

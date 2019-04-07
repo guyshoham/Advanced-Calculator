@@ -9,7 +9,7 @@ public class Test {
         assignment.put("y", 9.0);
         assignment.put("z", 0.0);
 
-        Expression e = new Minus("x", new Plus("y", 6));
+        Expression e = new Plus("x", new Mult("y", 6));
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
     }

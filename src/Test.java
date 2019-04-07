@@ -13,10 +13,16 @@ public class Test {
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
-
         e = new Pow("z", new Pow(2, 3));
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
+        e = new Log(2, 256);
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
+        e = new Plus(new Mult(new Num(2), new Var("x")), new Var("y"));
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
     }
 }

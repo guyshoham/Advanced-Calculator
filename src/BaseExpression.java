@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 
 abstract public class BaseExpression {
 
@@ -22,4 +23,6 @@ abstract public class BaseExpression {
         }
         return false;
     }
+
+    public abstract double evaluate(Map<String, Double> assignment) throws Exception;
 }

@@ -24,5 +24,10 @@ public class Test {
         e = new Plus(new Mult(new Num(2), new Var("x")), new Var("y"));
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
+
+        e = new Neg(5);
+        System.out.println(e);
+        System.out.println(e.evaluate(assignment));
+
     }
 }

@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-abstract public class BaseExpression {
+abstract public class BaseExpression implements Expression {
 
     private Expression left, right;
 
@@ -10,11 +11,69 @@ abstract public class BaseExpression {
         this.right = right;
     }
 
-    public BaseExpression(Expression left) {
-        this.left = left;
+    //Expression interface methods
+    @Override
+    public List<String> getVariables() {
+        List<String> newList = new ArrayList<>(left.getVariables());
+        if (right != null) {
+            newList.addAll(right.getVariables());
+        }
+        return newList;
     }
 
-    public boolean isContainVar(String var, Expression e) {
+    @Override
+    public Expression assign(String var, Expression expression) {
+        List<String> variables;
+        if (!this.isContainVar(var, this)) {
+            return this;
+        } else {
+            variables = left.getVariables();
+            for (String variable : variables) {
+                if (variable.equals(var)) {
+                    left = left.assign(var, expression);
+                }
+            }
+            if (right != null) {
+                variables = right.getVariables();
+                for (String variable : variables) {
+                    if (variable.equals(var)) {
+                        right = right.assign(var, expression);
+                    }
+                }
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public double evaluate(Map<String, Double> assignment) throws Exception {
+        Expression expression = this;
+        //assign all variables
+        List<String> variables = this.getVariables();
+        for (String variable : variables) {
+            for (String s : assignment.keySet()) {
+                if (variable.equals(s)) {
+                    double d = assignment.get(s);
+                    expression = expression.assign(variable, new Num(d));
+                }
+            }
+        }
+
+        //calculate expression without variables
+        return this.calculate(expression);
+    }
+
+    public Expression getLeft() {
+        return left;
+    }
+
+    public Expression getRight() {
+        return right;
+    }
+
+    protected abstract double calculate(Expression expression) throws Exception;
+
+    private boolean isContainVar(String var, Expression e) {
         List<String> variables = e.getVariables();
         for (String variable : variables) {
             if (variable.equals(var)) {
@@ -24,5 +83,31 @@ abstract public class BaseExpression {
         return false;
     }
 
-    public abstract double evaluate(Map<String, Double> assignment) throws Exception;
+    public boolean isSidesEqual() throws Exception {
+        if (left.getVariables().isEmpty() && right.getVariables().isEmpty()) {
+            double leftValue = left.evaluate();
+            double rightValue = right.evaluate();
+            return leftValue == rightValue;
+        }
+        if (left.getClass().getTypeName().equals("Num") && right.getClass().getTypeName().equals("Num")) {
+            return left.toString().equals(right.toString());
+        }
+
+        left = left.assign("x", new Num(1));
+        right = right.assign("x", new Num(1));
+        double leftValue = left.evaluate();
+        double rightValue = right.evaluate();
+        return leftValue == rightValue;
+        /*if (left.getClass().getTypeName().equals("Var") && right.getClass().getTypeName().equals("Var")) {
+            return left.toString().equals(right.toString());
+        }
+        if (left.getClass().getTypeName().equals("Var") && right.getClass().getTypeName().equals("Num")) {
+            return left.toString().equals(right.toString());
+        }
+        if (left.getClass().getTypeName().equals("Num") && right.getClass().getTypeName().equals("Var")) {
+            return left.toString().equals(right.toString());
+        }*/
+        //return left.isSidesEqual() && right.isSidesEqual();
+    }
+
 }

@@ -120,7 +120,10 @@ public class Plus extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() {
+    public Expression simplify() throws Exception {
+        if (left.isNoVars() && right.isNoVars()) {
+            return new Num(left.evaluate() + right.evaluate());
+        }
         //X + 0 = X
         if (right.toString().equals("0")) {
             return left;

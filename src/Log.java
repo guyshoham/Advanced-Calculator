@@ -62,7 +62,10 @@ public class Log extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() {
+    public Expression simplify() throws Exception {
+        if (base.isNoVars() && num.isNoVars()) {
+            return new Num(base.evaluate() + num.evaluate());
+        }
         //log(x,x) = 1
         if (base.toString().equals(num.toString())) {
             return new Num(1);

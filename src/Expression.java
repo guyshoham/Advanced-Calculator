@@ -52,7 +52,7 @@ public interface Expression {
     /**
      * @return a simplified version of the current expression.
      */
-    Expression simplify();
+    Expression simplify() throws Exception;
 
     /**
      * @return left expression
@@ -69,4 +69,6 @@ public interface Expression {
      * @throws Exception exception.
      */
     boolean isSidesEqual() throws Exception;
+
+    boolean isNoVars();
 }

@@ -62,7 +62,10 @@ public class Minus extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() {
+    public Expression simplify() throws Exception {
+        if (left.isNoVars() && right.isNoVars()) {
+            return new Num(left.evaluate() + right.evaluate());
+        }
         //X - X = 0
         if (left.toString().equals(right.toString())) {
             return new Num(0);

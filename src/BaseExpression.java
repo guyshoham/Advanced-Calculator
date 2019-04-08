@@ -83,6 +83,10 @@ abstract public class BaseExpression implements Expression {
         return false;
     }
 
+    public boolean isNoVars() {
+        return this.getVariables().isEmpty();
+    }
+
     public boolean isSidesEqual() throws Exception {
         if (left.getVariables().isEmpty() && right.getVariables().isEmpty()) {
             double leftValue = left.evaluate();

@@ -56,6 +56,11 @@ public class Num implements Expression {
     }
 
     @Override
+    public boolean isNoVars() {
+        return true;
+    }
+
+    @Override
     public String toString() {
         if (num % 1.0 == 0) {
             int retVal = (int) num;

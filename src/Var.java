@@ -71,6 +71,11 @@ public class Var implements Expression {
     }
 
     @Override
+    public boolean isNoVars() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return var;
     }

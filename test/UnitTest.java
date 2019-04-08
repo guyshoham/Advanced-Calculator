@@ -24,8 +24,8 @@ public class UnitTest {
     public void Part1Integration() throws Exception {
         setVariables();
         //((2x + y) * 4)^x
-        e = new Pow(new Mult(new Plus(new Mult(new Num(2), new Var("x")),
-                new Var("y")), new Num(4)), new Var("x"));
+        e = new Pow(new Mult(new Plus(new Mult(2, new Var("x")),
+                new Var("y")), 4), new Var("x"));
         int value = (int) e.evaluate(assignment);
         assertEquals(4096, value);
     }
@@ -60,7 +60,7 @@ public class UnitTest {
     @Test
     public void Mult() throws Exception {
         setVariables();
-        e = new Plus(new Mult(new Num(2), new Var("x")), new Var("y"));
+        e = new Plus(new Mult(2, new Var("x")), new Var("y"));
         int actual = (int) e.evaluate(assignment);
         int expected = (int) ((2 * X) + Y);
         assertEquals(expected, actual);
@@ -96,9 +96,19 @@ public class UnitTest {
     @Test
     public void Differentiate() {
         setVariables();
-        e = new Pow(new Var("x"), new Num(4));
+        e = new Pow(new Var("x"), 4);
         String actual = e.differentiate("x").toString();
         String expected = "(4 * (x^(4 - 1)))";
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void DifferentiateX() {
+        setVariables();
+        e = new Var("x");
+        String actual = e.differentiate("x").toString();
+        String expected = "1";
+        assertEquals(expected, actual);
+    }
+
 }

@@ -71,6 +71,14 @@ abstract public class BaseExpression implements Expression {
         return right;
     }
 
+    public void setLeft(Expression left) {
+        this.left = left;
+    }
+
+    public void setRight(Expression right) {
+        this.right = right;
+    }
+
     protected abstract double calculate(Expression expression) throws Exception;
 
     private boolean isContainVar(String var, Expression e) {
@@ -85,6 +93,18 @@ abstract public class BaseExpression implements Expression {
 
     public boolean isNoVars() {
         return this.getVariables().isEmpty();
+    }
+
+    public Expression getExpNoVars() throws Exception {
+        if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
+            left = new Num(left.evaluate());
+            this.getExpNoVars();
+        }
+        if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
+            right = new Num(left.evaluate() + right.evaluate());
+            this.getExpNoVars();
+        }
+        return this;
     }
 
     public boolean isSidesEqual() throws Exception {

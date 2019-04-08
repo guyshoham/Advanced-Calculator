@@ -63,6 +63,14 @@ public class Log extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() throws Exception {
+        if (base.isNoVars() && !base.getClass().getTypeName().equals("Num")) {
+            base = new Num(base.evaluate());
+            this.simplify();
+        }
+        if (num.isNoVars() && !num.getClass().getTypeName().equals("Num")) {
+            num = new Num(base.evaluate() + num.evaluate());
+            this.simplify();
+        }
         if (base.isNoVars() && num.isNoVars()) {
             return new Num(base.evaluate() + num.evaluate());
         }

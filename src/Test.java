@@ -10,10 +10,10 @@ public class Test {
         assignment.put("z", 2.0);
         Expression e;
 
-        e = new Num(0);
+        e = new Plus(new Mult(5, 6), "x");
         System.out.println(e);
-        e = new Num(1);
-        System.out.println(e);
+        System.out.println(e.simplify());
+
 
 
         /*e = new Plus(new Plus("x", "x"), new Mult(2, "x"));

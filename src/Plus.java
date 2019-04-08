@@ -121,8 +121,13 @@ public class Plus extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() throws Exception {
-        if (left.isNoVars() && right.isNoVars()) {
-            return new Num(left.evaluate() + right.evaluate());
+        if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
+            left = new Num(left.evaluate());
+            this.simplify();
+        }
+        if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
+            right = new Num(left.evaluate() + right.evaluate());
+            this.simplify();
         }
         //X + 0 = X
         if (right.toString().equals("0")) {

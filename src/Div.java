@@ -7,12 +7,16 @@ public class Div extends BinaryExpression implements Expression {
         this.right = right;
     }
 
-    public Div(String left, Expression right) {
-        this(new Var(left), right);
-    }
-
     public Div(Expression left, String right) {
         this(left, new Var(right));
+    }
+
+    public Div(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
+    public Div(String left, Expression right) {
+        this(new Var(left), right);
     }
 
     public Div(String left, String right) {
@@ -23,20 +27,16 @@ public class Div extends BinaryExpression implements Expression {
         this(new Var(left), new Num(right));
     }
 
+    public Div(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
     public Div(double left, String right) {
         this(new Num(left), new Var(right));
     }
 
     public Div(double left, double right) {
         this(new Num(left), new Num(right));
-    }
-
-    public Div(double left, Expression right) {
-        this(new Num(left), right);
-    }
-
-    public Div(Expression left, double right) {
-        this(left, new Num(right));
     }
 
     @Override
@@ -47,6 +47,7 @@ public class Div extends BinaryExpression implements Expression {
         return expression.getLeft().evaluate() / expression.getRight().evaluate();
     }
 
+    @Override
     public double evaluate() throws Exception {
         if (right.evaluate() == 0) {
             throw new Exception("cannot divide by zero.");

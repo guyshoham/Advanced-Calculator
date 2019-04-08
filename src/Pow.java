@@ -7,10 +7,6 @@ public class Pow extends BinaryExpression implements Expression {
         this.power = power;
     }
 
-    public Pow(String base, Expression power) {
-        this(new Var(base), power);
-    }
-
     public Pow(Expression base, String power) {
         this(base, new Var(power));
     }
@@ -19,8 +15,8 @@ public class Pow extends BinaryExpression implements Expression {
         this(base, new Num(power));
     }
 
-    public Pow(double base, Expression power) {
-        this(new Num(base), power);
+    public Pow(String base, Expression power) {
+        this(new Var(base), power);
     }
 
     public Pow(String base, String power) {
@@ -29,6 +25,10 @@ public class Pow extends BinaryExpression implements Expression {
 
     public Pow(String base, double power) {
         this(new Var(base), new Num(power));
+    }
+
+    public Pow(double base, Expression power) {
+        this(new Num(base), power);
     }
 
     public Pow(double base, String power) {
@@ -44,6 +44,7 @@ public class Pow extends BinaryExpression implements Expression {
         return Math.pow(expression.getLeft().evaluate(), expression.getRight().evaluate());
     }
 
+    @Override
     public double evaluate() throws Exception {
         return Math.pow(base.evaluate(), power.evaluate());
     }

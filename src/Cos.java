@@ -20,6 +20,7 @@ public class Cos extends UnaryExpression implements Expression {
         return Math.cos(expression.getLeft().evaluate());
     }
 
+    @Override
     public double evaluate() throws Exception {
         return Math.cos(expression.evaluate());
     }

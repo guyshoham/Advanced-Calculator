@@ -8,7 +8,7 @@ public interface Expression {
      *
      * @param assignment assignment
      * @return the result
-     * @throws Exception
+     * @throws Exception exception
      */
     double evaluate(Map<String, Double> assignment) throws Exception;
 

@@ -20,6 +20,7 @@ public class Sin extends UnaryExpression implements Expression {
         return Math.sin(expression.getLeft().evaluate());
     }
 
+    @Override
     public double evaluate() throws Exception {
         return Math.sin(expression.evaluate());
     }

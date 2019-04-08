@@ -20,6 +20,7 @@ public class Neg extends UnaryExpression implements Expression {
         return -1 * expression.getLeft().evaluate();
     }
 
+    @Override
     public double evaluate() throws Exception {
         return -1 * expression.evaluate();
     }

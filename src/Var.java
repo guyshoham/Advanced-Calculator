@@ -69,6 +69,7 @@ public class Var implements Expression {
     public boolean isSidesEqual() {
         return true;
     }
+
     @Override
     public String toString() {
         return var;

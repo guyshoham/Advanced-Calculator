@@ -11,12 +11,12 @@ public class Num implements Expression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
+    public double evaluate(Map<String, Double> assignment) {
         return num;
     }
 
     @Override
-    public double evaluate() throws Exception {
+    public double evaluate() {
         return num;
     }
 

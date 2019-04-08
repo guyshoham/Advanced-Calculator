@@ -7,12 +7,16 @@ public class Minus extends BinaryExpression implements Expression {
         this.right = right;
     }
 
-    public Minus(String left, Expression right) {
-        this(new Var(left), right);
-    }
-
     public Minus(Expression left, String right) {
         this(left, new Var(right));
+    }
+
+    public Minus(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
+    public Minus(String left, Expression right) {
+        this(new Var(left), right);
     }
 
     public Minus(String left, String right) {
@@ -23,6 +27,10 @@ public class Minus extends BinaryExpression implements Expression {
         this(new Var(left), new Num(right));
     }
 
+    public Minus(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
     public Minus(double left, String right) {
         this(new Num(left), new Var(right));
     }
@@ -31,19 +39,12 @@ public class Minus extends BinaryExpression implements Expression {
         this(new Num(left), new Num(right));
     }
 
-    public Minus(Expression left, double right) {
-        this(left, new Num(right));
-    }
-
-    public Minus(double left, Expression right) {
-        this(new Num(left), right);
-    }
-
     @Override
     protected double calculate(Expression expression) throws Exception {
         return expression.getLeft().evaluate() - expression.getRight().evaluate();
     }
 
+    @Override
     public double evaluate() throws Exception {
         return left.evaluate() - right.evaluate();
     }

@@ -9,12 +9,16 @@ public class Mult extends BinaryExpression implements Expression {
         this.right = right;
     }
 
-    public Mult(String left, Expression right) {
-        this(new Var(left), right);
-    }
-
     public Mult(Expression left, String right) {
         this(left, new Var(right));
+    }
+
+    public Mult(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
+    public Mult(String left, Expression right) {
+        this(new Var(left), right);
     }
 
     public Mult(String left, String right) {
@@ -25,20 +29,16 @@ public class Mult extends BinaryExpression implements Expression {
         this(new Var(left), new Num(right));
     }
 
+    public Mult(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
     public Mult(double left, String right) {
         this(new Num(left), new Var(right));
     }
 
     public Mult(double left, double right) {
         this(new Num(left), new Num(right));
-    }
-
-    public Mult(double left, Expression right) {
-        this(new Num(left), right);
-    }
-
-    public Mult(Expression left, double right) {
-        this(left, new Num(right));
     }
 
     @Override

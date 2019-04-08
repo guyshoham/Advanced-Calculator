@@ -8,12 +8,16 @@ public class Plus extends BinaryExpression implements Expression {
         this.right = right;
     }
 
-    public Plus(String left, Expression right) {
-        this(new Var(left), right);
-    }
-
     public Plus(Expression left, String right) {
         this(left, new Var(right));
+    }
+
+    public Plus(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
+    public Plus(String left, Expression right) {
+        this(new Var(left), right);
     }
 
     public Plus(String left, String right) {
@@ -24,6 +28,10 @@ public class Plus extends BinaryExpression implements Expression {
         this(new Var(left), new Num(right));
     }
 
+    public Plus(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
     public Plus(double left, String right) {
         this(new Num(left), new Var(right));
     }
@@ -32,19 +40,12 @@ public class Plus extends BinaryExpression implements Expression {
         this(new Num(left), new Num(right));
     }
 
-    public Plus(Expression left, double right) {
-        this(left, new Num(right));
-    }
-
-    public Plus(double left, Expression right) {
-        this(new Num(left), right);
-    }
-
     @Override
     protected double calculate(Expression expression) throws Exception {
         return expression.getLeft().evaluate() + expression.getRight().evaluate();
     }
 
+    @Override
     public double evaluate() throws Exception {
         return left.evaluate() + right.evaluate();
     }

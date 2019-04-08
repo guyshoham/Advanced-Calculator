@@ -7,12 +7,16 @@ public class Log extends BinaryExpression implements Expression {
         this.num = num;
     }
 
-    public Log(String base, Expression num) {
-        this(new Var(base), num);
-    }
-
     public Log(Expression base, String num) {
         this(base, new Var(num));
+    }
+
+    public Log(Expression base, double num) {
+        this(base, new Num(num));
+    }
+
+    public Log(String base, Expression num) {
+        this(new Var(base), num);
     }
 
     public Log(String base, String num) {
@@ -23,6 +27,10 @@ public class Log extends BinaryExpression implements Expression {
         this(new Var(base), new Num(num));
     }
 
+    public Log(double base, Expression num) {
+        this(new Num(base), num);
+    }
+
     public Log(double base, String num) {
         this(new Num(base), new Var(num));
     }
@@ -31,19 +39,12 @@ public class Log extends BinaryExpression implements Expression {
         this(new Num(base), new Num(num));
     }
 
-    public Log(double base, Expression num) {
-        this(new Num(base), num);
-    }
-
-    public Log(Expression base, double num) {
-        this(base, new Num(num));
-    }
-
     @Override
     protected double calculate(Expression expression) throws Exception {
         return Math.log(expression.getRight().evaluate()) / Math.log(expression.getLeft().evaluate());
     }
 
+    @Override
     public double evaluate() throws Exception {
         return Math.log(num.evaluate()) / Math.log(base.evaluate());
     }

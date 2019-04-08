@@ -73,7 +73,15 @@ public class Div extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+        //X / X = 1
+        if (left.toString().equals(right.toString())) {
+            return new Num(1);
+        }
+        //X / 1 = X
+        if (right.toString().equals("1")) {
+            return left;
+        }
+        return this;
     }
 
     @Override

@@ -70,7 +70,19 @@ public class Mult extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+        //X * 1 = X
+        if (right.toString().equals("1")) {
+            return left;
+        }
+        //1 * X = X
+        if (left.toString().equals("1")) {
+            return right;
+        }
+        //X * 0 = 0, 0 * X = 0
+        if (left.toString().equals("0") || right.toString().equals("0")) {
+            return new Num(0);
+        }
+        return this;
     }
 
     @Override

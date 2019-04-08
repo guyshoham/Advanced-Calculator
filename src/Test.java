@@ -10,10 +10,16 @@ public class Test {
         assignment.put("z", 2.0);
         Expression e;
 
-        e = new Plus(new Plus("x", "x"), new Mult(2, "x"));
+        e = new Num(0);
+        System.out.println(e);
+        e = new Num(1);
+        System.out.println(e);
+
+
+        /*e = new Plus(new Plus("x", "x"), new Mult(2, "x"));
         //e = new Mult(3, "x");
         System.out.println(e);
         System.out.println(e.isSidesEqual());
-
+*/
     }
 }

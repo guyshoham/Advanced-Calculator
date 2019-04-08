@@ -1,6 +1,9 @@
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Expression Interface.
+ */
 public interface Expression {
     /**
      * Evaluate the expression using the variable values provided in the assignment.
@@ -51,9 +54,19 @@ public interface Expression {
      */
     Expression simplify();
 
+    /**
+     * @return left expression
+     */
     Expression getLeft();
 
+    /**
+     * @return right expression
+     */
     Expression getRight();
 
+    /**
+     * @return true if left and right sides of expression are equal, false otherwise.
+     * @throws Exception exception.
+     */
     boolean isSidesEqual() throws Exception;
 }

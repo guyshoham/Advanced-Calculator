@@ -40,6 +40,12 @@ public interface Expression {
      */
     Expression assign(String var, Expression expression);
 
+    /**
+     * @param var variable
+     * @return the expression tree resulting from differentiating the current expression relative to variable `var`.
+     */
+    Expression differentiate(String var);
+
     Expression getLeft();
 
     Expression getRight();

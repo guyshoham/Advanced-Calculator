@@ -31,6 +31,14 @@ public class Log extends BinaryExpression implements Expression {
         this(new Num(base), new Num(num));
     }
 
+    public Log(double base, Expression num) {
+        this(new Num(base), num);
+    }
+
+    public Log(Expression base, double num) {
+        this(base, new Num(num));
+    }
+
     @Override
     protected double calculate(Expression expression) throws Exception {
         return Math.log(expression.getRight().evaluate()) / Math.log(expression.getLeft().evaluate());
@@ -45,6 +53,11 @@ public class Log extends BinaryExpression implements Expression {
         Expression e1 = base.assign(var, expression);
         Expression e2 = num.assign(var, expression);
         return new Log(e1, e2);
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return new Div(1, new Mult(new Log(Math.E, base), num));
     }
 
     @Override

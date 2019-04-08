@@ -31,6 +31,11 @@ public class Num implements Expression {
     }
 
     @Override
+    public Expression differentiate(String var) {
+        return new Num(0);
+    }
+
+    @Override
     public Expression getLeft() {
         return new Num(num);
     }
@@ -45,7 +50,7 @@ public class Num implements Expression {
         if (num % 1.0 == 0) {
             int retVal = (int) num;
             return String.valueOf(retVal);
-        }else {
+        } else {
             double retVal = num;
             return String.valueOf(retVal);
         }

@@ -49,6 +49,11 @@ public class Plus extends BinaryExpression implements Expression {
     }
 
     @Override
+    public Expression differentiate(String var) {
+        return new Plus(left.differentiate(var), right.differentiate(var));
+    }
+
+    @Override
     public String toString() {
         return "(" + left.toString() + " + " + right.toString() + ")";
     }

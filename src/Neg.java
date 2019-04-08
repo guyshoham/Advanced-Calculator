@@ -30,6 +30,11 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
+    public Expression differentiate(String var) {
+        return new Neg(expression.differentiate(var));
+    }
+
+    @Override
     public String toString() {
         return "(-" + expression.toString() + ")";
     }

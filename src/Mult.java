@@ -54,6 +54,12 @@ public class Mult extends BinaryExpression implements Expression {
         Expression e2 = right.assign(var, expression);
         return new Mult(e1, e2);
     }
+
+    @Override
+    public Expression differentiate(String var) {
+        return new Plus(new Mult(left.differentiate(var), right), new Mult(left, right.differentiate(var)));
+    }
+
     @Override
     public String toString() {
         return "(" + left.toString() + " * " + right.toString() + ")";

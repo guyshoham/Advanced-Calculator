@@ -31,6 +31,14 @@ public class Div extends BinaryExpression implements Expression {
         this(new Num(left), new Num(right));
     }
 
+    public Div(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
+    public Div(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
     @Override
     protected double calculate(Expression expression) throws Exception {
         if (expression.getRight().evaluate() == 0) {
@@ -51,6 +59,15 @@ public class Div extends BinaryExpression implements Expression {
         Expression e1 = left.assign(var, expression);
         Expression e2 = right.assign(var, expression);
         return new Div(e1, e2);
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return new Div(
+                new Minus(
+                        new Mult(left.differentiate(var), right),
+                        new Mult(left, right.differentiate(var))),
+                new Pow(right, 2));
     }
 
     @Override

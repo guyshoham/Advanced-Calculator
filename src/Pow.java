@@ -15,6 +15,14 @@ public class Pow extends BinaryExpression implements Expression {
         this(base, new Var(power));
     }
 
+    public Pow(Expression base, double power) {
+        this(base, new Num(power));
+    }
+
+    public Pow(double base, Expression power) {
+        this(new Num(base), power);
+    }
+
     public Pow(String base, String power) {
         this(new Var(base), new Var(power));
     }
@@ -38,6 +46,11 @@ public class Pow extends BinaryExpression implements Expression {
 
     public double evaluate() throws Exception {
         return Math.pow(base.evaluate(), power.evaluate());
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return new Mult(power, new Pow(base, new Minus(power, 1)));
     }
 
     @Override

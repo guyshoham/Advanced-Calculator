@@ -44,5 +44,8 @@ public class Test {
         System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
+        e = new Pow(new Var("x"), new Num(4));
+        Expression de = e.differentiate("x");
+        System.out.println(de);
     }
 }

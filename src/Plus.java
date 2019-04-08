@@ -32,6 +32,14 @@ public class Plus extends BinaryExpression implements Expression {
         this(new Num(left), new Num(right));
     }
 
+    public Plus(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
+    public Plus(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
     @Override
     protected double calculate(Expression expression) throws Exception {
         return expression.getLeft().evaluate() + expression.getRight().evaluate();
@@ -51,6 +59,40 @@ public class Plus extends BinaryExpression implements Expression {
     @Override
     public Expression differentiate(String var) {
         return new Plus(left.differentiate(var), right.differentiate(var));
+    }
+
+    @Override
+    public Expression simplify() {
+        if (this.getVariables().isEmpty()) {
+            try {
+                return new Num(this.evaluate());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (left.getVariables().isEmpty()) {
+            double value = -1;
+            try {
+                value = left.evaluate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (value == 0) {
+                return right;
+            }
+        }
+        if (right.getVariables().isEmpty()) {
+            double value = -1;
+            try {
+                value = right.evaluate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (value == 0) {
+                return left;
+            }
+        }
+        return this;
     }
 
     @Override

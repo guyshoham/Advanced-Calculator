@@ -61,6 +61,11 @@ public class Log extends BinaryExpression implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "log(" + base.toString() + "," + num.toString() + ")";
     }

@@ -35,6 +35,11 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "(-" + expression.toString() + ")";
     }

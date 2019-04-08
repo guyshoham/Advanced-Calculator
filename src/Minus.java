@@ -61,6 +61,40 @@ public class Minus extends BinaryExpression implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        if (this.getVariables().isEmpty()) {
+            try {
+                return new Num(this.evaluate());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (left.getVariables().isEmpty()) {
+            double value = -1;
+            try {
+                value = left.evaluate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (value == 0) {
+                return right;
+            }
+        }
+        if (right.getVariables().isEmpty()) {
+            double value = -1;
+            try {
+                value = right.evaluate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (value == 0) {
+                return left;
+            }
+        }
+        return this;
+    }
+
+    @Override
     public String toString() {
         return "(" + left.toString() + " - " + right.toString() + ")";
     }

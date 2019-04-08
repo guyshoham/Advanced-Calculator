@@ -54,6 +54,11 @@ public class Pow extends BinaryExpression implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return null;
+    }
+
+    @Override
     public Expression assign(String var, Expression expression) {
         Expression e1 = base.assign(var, expression);
         Expression e2 = power.assign(var, expression);

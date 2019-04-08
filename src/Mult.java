@@ -33,6 +33,14 @@ public class Mult extends BinaryExpression implements Expression {
         this(new Num(left), new Num(right));
     }
 
+    public Mult(double left, Expression right) {
+        this(new Num(left), right);
+    }
+
+    public Mult(Expression left, double right) {
+        this(left, new Num(right));
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return 0;
@@ -58,6 +66,11 @@ public class Mult extends BinaryExpression implements Expression {
     @Override
     public Expression differentiate(String var) {
         return new Plus(new Mult(left.differentiate(var), right), new Mult(left, right.differentiate(var)));
+    }
+
+    @Override
+    public Expression simplify() {
+        return null;
     }
 
     @Override

@@ -71,6 +71,11 @@ public class Div extends BinaryExpression implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "(" + left.toString() + " / " + right.toString() + ")";
     }

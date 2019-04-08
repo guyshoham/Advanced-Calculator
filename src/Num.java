@@ -36,6 +36,11 @@ public class Num implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return this;
+    }
+
+    @Override
     public Expression getLeft() {
         return new Num(num);
     }
@@ -43,6 +48,11 @@ public class Num implements Expression {
     @Override
     public Expression getRight() {
         return new Num(num);
+    }
+
+    @Override
+    public boolean isSidesEqual() {
+        return true;
     }
 
     @Override

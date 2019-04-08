@@ -13,7 +13,7 @@ public class Test {
         //((2x + y) * 4)^x
         Expression e = new Pow(new Mult(new Plus(new Mult(new Num(2), new Var("x")),
                 new Var("y")), new Num(4)), new Var("x"));
-        System.out.println(e);
+        /*System.out.println(e);
         System.out.println(e.evaluate(assignment));
 
         e = new Plus("x", new Div("y", 6));
@@ -46,6 +46,12 @@ public class Test {
 
         e = new Pow(new Var("x"), new Num(4));
         Expression de = e.differentiate("x");
-        System.out.println(de);
+        System.out.println(de);*/
+
+        e = new Plus(new Plus("x", "x"), new Mult(2, "x"));
+        //e = new Mult(3, "x");
+        System.out.println(e);
+        System.out.println(e.isSidesEqual());
+
     }
 }

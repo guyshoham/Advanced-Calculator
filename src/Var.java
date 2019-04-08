@@ -50,6 +50,11 @@ public class Var implements Expression {
     }
 
     @Override
+    public Expression simplify() {
+        return this;
+    }
+
+    @Override
     public Expression getLeft() {
         return new Var(var);
 
@@ -60,6 +65,10 @@ public class Var implements Expression {
         return new Var(var);
     }
 
+    @Override
+    public boolean isSidesEqual() {
+        return true;
+    }
     @Override
     public String toString() {
         return var;

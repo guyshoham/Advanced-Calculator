@@ -46,7 +46,14 @@ public interface Expression {
      */
     Expression differentiate(String var);
 
+    /**
+     * @return a simplified version of the current expression.
+     */
+    Expression simplify();
+
     Expression getLeft();
 
     Expression getRight();
+
+    boolean isSidesEqual() throws Exception;
 }

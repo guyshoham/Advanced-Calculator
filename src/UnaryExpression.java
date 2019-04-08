@@ -50,6 +50,10 @@ abstract public class UnaryExpression extends BaseExpression implements Expressi
         return this;
     }
 
+    public boolean isSidesEqual() {
+        return true;
+    }
+
     public Expression getLeft() {
         return expression;
     }

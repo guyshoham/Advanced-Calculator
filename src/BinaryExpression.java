@@ -60,6 +60,33 @@ abstract public class BinaryExpression extends BaseExpression implements Express
         return this;
     }
 
+    public boolean isSidesEqual() throws Exception {
+        if (left.getVariables().isEmpty() && right.getVariables().isEmpty()) {
+            double leftValue = left.evaluate();
+            double rightValue = right.evaluate();
+            return leftValue == rightValue;
+        }
+        if (left.getClass().getTypeName().equals("Num") && right.getClass().getTypeName().equals("Num")) {
+            return left.toString().equals(right.toString());
+        }
+
+        left = left.assign("x", new Num(1));
+        right = right.assign("x", new Num(1));
+        double leftValue = left.evaluate();
+        double rightValue = right.evaluate();
+        return leftValue == rightValue;
+        /*if (left.getClass().getTypeName().equals("Var") && right.getClass().getTypeName().equals("Var")) {
+            return left.toString().equals(right.toString());
+        }
+        if (left.getClass().getTypeName().equals("Var") && right.getClass().getTypeName().equals("Num")) {
+            return left.toString().equals(right.toString());
+        }
+        if (left.getClass().getTypeName().equals("Num") && right.getClass().getTypeName().equals("Var")) {
+            return left.toString().equals(right.toString());
+        }*/
+        //return left.isSidesEqual() && right.isSidesEqual();
+    }
+
     public Expression getLeft() {
         return left;
     }

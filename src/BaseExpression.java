@@ -6,7 +6,7 @@ abstract public class BaseExpression implements Expression {
 
     private Expression left, right;
 
-    public BaseExpression(Expression left, Expression right) {
+    BaseExpression(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
@@ -69,14 +69,6 @@ abstract public class BaseExpression implements Expression {
 
     public Expression getRight() {
         return right;
-    }
-
-    public void setLeft(Expression left) {
-        this.left = left;
-    }
-
-    public void setRight(Expression right) {
-        this.right = right;
     }
 
     protected abstract double calculate(Expression expression) throws Exception;

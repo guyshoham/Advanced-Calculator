@@ -32,8 +32,8 @@ public class Var implements Expression {
     }
 
     @Override
-    public Expression assign(String var, Expression expression) {
-        if (this.var.equals(var)) {
+    public Expression assign(String string, Expression expression) {
+        if (this.var.equals(string)) {
             return expression;
         } else {
             return this;
@@ -41,8 +41,8 @@ public class Var implements Expression {
     }
 
     @Override
-    public Expression differentiate(String var) {
-        if (var.equals(this.var)) {
+    public Expression differentiate(String string) {
+        if (string.equals(this.var)) {
             return new Num(1);
         } else {
             return this;

@@ -16,8 +16,8 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        return -1 * expression.getLeft().evaluate();
+    protected double calculate(Expression e) throws Exception {
+        return -1 * e.getLeft().evaluate();
     }
 
     @Override
@@ -26,8 +26,8 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression assign(String var, Expression expression) {
-        return new Neg(expression.assign(var, expression));
+    public Expression assign(String var, Expression e) {
+        return new Neg(e.assign(var, e));
     }
 
     @Override

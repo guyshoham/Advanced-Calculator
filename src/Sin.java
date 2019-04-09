@@ -16,8 +16,8 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        return Math.sin(expression.getLeft().evaluate());
+    protected double calculate(Expression e) throws Exception {
+        return Math.sin(e.getLeft().evaluate());
     }
 
     @Override
@@ -26,8 +26,8 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression assign(String var, Expression expression) {
-        return new Sin(expression.assign(var, expression));
+    public Expression assign(String var, Expression e) {
+        return new Sin(e.assign(var, e));
     }
 
     @Override
@@ -39,6 +39,7 @@ public class Sin extends UnaryExpression implements Expression {
     public Expression simplify() throws Exception {
         return new Sin(expression.simplify());
     }
+
     @Override
     public String toString() {
         return "sin(" + expression.toString() + ")";

@@ -51,6 +51,7 @@ public interface Expression {
 
     /**
      * @return a simplified version of the current expression.
+     * @throws Exception e
      */
     Expression simplify() throws Exception;
 

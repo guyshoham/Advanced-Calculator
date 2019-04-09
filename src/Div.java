@@ -73,16 +73,19 @@ public class Div extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() throws Exception {
+        //left is only one num
         if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
             left = new Num(left.evaluate());
-            this.simplify();
+            return this.simplify();
         }
+        //right is only one num
         if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
-            right = new Num(left.evaluate() + right.evaluate());
-            this.simplify();
+            right = new Num(right.evaluate());
+            return this.simplify();
         }
+        //left and right has no vars
         if (left.isNoVars() && right.isNoVars()) {
-            return new Num(left.evaluate() + right.evaluate());
+            return new Num(left.evaluate() / right.evaluate());
         }
         //X / X = 1
         if (left.toString().equals(right.toString())) {
@@ -92,7 +95,15 @@ public class Div extends BinaryExpression implements Expression {
         if (right.toString().equals("1")) {
             return left;
         }
-        return this;
+        if (canBeSimplified(left, left.simplify())) {
+            left = left.simplify();
+            return this.simplify();
+        }
+        if (canBeSimplified(right, right.simplify())) {
+            right = right.simplify();
+            return this.simplify();
+        }
+        return new Div(left.simplify(), right.simplify());
     }
 
     @Override

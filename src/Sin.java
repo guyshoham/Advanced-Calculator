@@ -36,10 +36,9 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() {
-        return null;
+    public Expression simplify() throws Exception {
+        return new Sin(expression.simplify());
     }
-
     @Override
     public String toString() {
         return "sin(" + expression.toString() + ")";

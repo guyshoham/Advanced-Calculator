@@ -36,10 +36,9 @@ public class Cos extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() {
-        return null;
+    public Expression simplify() throws Exception {
+        return new Cos(expression.simplify());
     }
-
     @Override
     public String toString() {
         return "cos(" + expression.toString() + ")";

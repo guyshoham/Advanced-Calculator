@@ -134,4 +134,9 @@ abstract public class BaseExpression implements Expression {
         //return left.isSidesEqual() && right.isSidesEqual();
     }
 
+    public boolean canBeSimplified(Expression e1, Expression e2) {
+        return !e1.toString().equals(e2.toString());
+    }
+
+
 }

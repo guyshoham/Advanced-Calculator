@@ -103,12 +103,103 @@ public class UnitTest {
     }
 
     @Test
-    public void DifferentiateX() {
+    public void DifferentiateVar() {
         setVariables();
         e = new Var("x");
         String actual = e.differentiate("x").toString();
         String expected = "1";
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void DifferentiateNum() {
+        setVariables();
+        e = new Num(5);
+        String actual = e.differentiate("x").toString();
+        String expected = "0";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiatePlus() {
+        setVariables();
+        e = new Plus("x", "x");
+        String actual = e.differentiate("x").toString();
+        String expected = "(1 + 1)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateMinus() {
+        setVariables();
+        e = new Minus("x", "x");
+        String actual = e.differentiate("x").toString();
+        String expected = "(1 - 1)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiatePow() {
+        setVariables();
+        e = new Pow("x", 2);
+        String actual = e.differentiate("x").toString();
+        String expected = "(2 * (x^(2 - 1)))";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateMult() {
+        setVariables();
+        e = new Mult(new Pow("x", 2), new Mult(2, "x"));
+        String actual = e.differentiate("x").toString();
+        String expected = "(((2 * (x^(2 - 1))) * (2 * x)) + ((x^2) * ((0 * x) + (2 * 1))))";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateDiv() {
+        setVariables();
+        e = new Div(new Pow("x", 2), new Mult(2, "x"));
+        String actual = e.differentiate("x").toString();
+        String expected = "((((2 * (x^(2 - 1))) * (2 * x)) - ((x^2) * ((0 * x) + (2 * 1)))) / ((2 * x)^2))";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateLog() {
+        setVariables();
+        e = new Log(Math.E, "x");
+        String actual = e.differentiate("x").toString();
+        String expected = "(1 / (log(2.718281828459045,2.718281828459045) * x))";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateNeg() {
+        setVariables();
+        e = new Neg("x");
+        String actual = e.differentiate("x").toString();
+        String expected = "(-1)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateSin() {
+        setVariables();
+        e = new Sin("x");
+        String actual = e.differentiate("x").toString();
+        String expected = "(cos(x) * 1)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void DifferentiateCos() {
+        setVariables();
+        e = new Cos("x");
+        String actual = e.differentiate("x").toString();
+        String expected = "((-sin(x)) * 1)";
+        assertEquals(expected, actual);
+    }
+
 
 }

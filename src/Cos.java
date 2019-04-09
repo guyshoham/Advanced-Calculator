@@ -32,7 +32,7 @@ public class Cos extends UnaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return new Sin(new Neg(expression.differentiate(var)));
+        return new Mult(new Neg(new Sin(expression)), expression.differentiate(var));
     }
 
     @Override

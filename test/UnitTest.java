@@ -201,5 +201,43 @@ public class UnitTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void Simplify1() throws Exception {
+        setVariables();
+        e = new Pow(new Minus(new Mult(2, 8), 6), 2);
+        String actual = e.simplify().toString();
+        String expected = "100";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void Simplify2() throws Exception {
+        setVariables();
+        e = new Plus(new Mult(5, 6), "x");
+        String actual = e.simplify().toString();
+        String expected = "(30 + x)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void Simplify3() throws Exception {
+        //log(9x,9x)*2y => 2y
+        setVariables();
+        e = new Mult(new Log(new Mult(9, "x"), new Mult(9, "x")), new Mult(2, "y"));
+        String actual = e.simplify().toString();
+        String expected = "(2 * y)";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void Simplify4() throws Exception {
+        //((3+6)*x + (4x * sin(0))) => 9x
+        setVariables();
+        e = new Plus(new Mult(new Plus(3, 6), "x"), new Mult(new Mult(4, "x"), new Sin(0)));
+        String actual = e.simplify().toString();
+        String expected = "(9 * x)";
+        assertEquals(expected, actual);
+    }
+
 
 }

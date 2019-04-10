@@ -2,15 +2,30 @@ public class Cos extends UnaryExpression implements Expression {
 
     private Expression expression;
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Cos(Expression expression) {
         super(expression);
         this.expression = expression;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Cos(String expression) {
         this(new Var(expression));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Cos(double expression) {
         this(new Num(expression));
     }

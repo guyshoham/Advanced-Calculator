@@ -8,8 +8,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  expression
-     * @param right expression
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(Expression left, Expression right) {
         super(left, right);
@@ -20,8 +20,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  expression
-     * @param right string
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(Expression left, String right) {
         this(left, new Var(right));
@@ -30,8 +30,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  expression
-     * @param right double
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(Expression left, double right) {
         this(left, new Num(right));
@@ -40,8 +40,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  string
-     * @param right expression
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(String left, Expression right) {
         this(new Var(left), right);
@@ -50,8 +50,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  string
-     * @param right string
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(String left, String right) {
         this(new Var(left), new Var(right));
@@ -60,8 +60,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  string
-     * @param right double
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(String left, double right) {
         this(new Var(left), new Num(right));
@@ -70,8 +70,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  double
-     * @param right expression
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(double left, Expression right) {
         this(new Num(left), right);
@@ -80,8 +80,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  double
-     * @param right string
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(double left, String right) {
         this(new Num(left), new Var(right));
@@ -90,8 +90,8 @@ public class Plus extends BinaryExpression implements Expression {
     /**
      * class constructor.
      *
-     * @param left  double
-     * @param right double
+     * @param left  left expression
+     * @param right right expression
      */
     public Plus(double left, double right) {
         this(new Num(left), new Num(right));

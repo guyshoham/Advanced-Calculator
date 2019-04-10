@@ -2,15 +2,30 @@ public class Neg extends UnaryExpression implements Expression {
 
     private Expression expression;
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Neg(Expression expression) {
         super(expression);
         this.expression = expression;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Neg(String expression) {
         this(new Var(expression));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Neg(double expression) {
         this(new Num(expression));
     }

@@ -6,6 +6,11 @@ public class Var implements Expression {
 
     private String var;
 
+    /**
+     * class constructor.
+     *
+     * @param variable variable
+     */
     public Var(String variable) {
         this.var = variable;
     }

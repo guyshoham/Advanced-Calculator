@@ -6,6 +6,11 @@ public class Num implements Expression {
 
     private double num;
 
+    /**
+     * class constructor.
+     *
+     * @param num number
+     */
     public Num(double num) {
         this.num = num;
     }

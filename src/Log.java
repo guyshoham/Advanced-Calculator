@@ -1,40 +1,94 @@
 public class Log extends BinaryExpression implements Expression {
     private Expression base, num;
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(Expression base, Expression num) {
         super(base, num);
         this.base = base;
         this.num = num;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(Expression base, String num) {
         this(base, new Var(num));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(Expression base, double num) {
         this(base, new Num(num));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(String base, Expression num) {
         this(new Var(base), num);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(String base, String num) {
         this(new Var(base), new Var(num));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(String base, double num) {
         this(new Var(base), new Num(num));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(double base, Expression num) {
         this(new Num(base), num);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(double base, String num) {
         this(new Num(base), new Var(num));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base expression represent base
+     * @param num  expression represent num
+     */
     public Log(double base, double num) {
         this(new Num(base), new Num(num));
     }

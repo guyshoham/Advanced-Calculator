@@ -1,40 +1,94 @@
 public class Div extends BinaryExpression implements Expression {
     private Expression left, right;
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(Expression left, Expression right) {
         super(left, right);
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(Expression left, String right) {
         this(left, new Var(right));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(Expression left, double right) {
         this(left, new Num(right));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(String left, Expression right) {
         this(new Var(left), right);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(String left, String right) {
         this(new Var(left), new Var(right));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(String left, double right) {
         this(new Var(left), new Num(right));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(double left, Expression right) {
         this(new Num(left), right);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(double left, String right) {
         this(new Num(left), new Var(right));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param left  left expression
+     * @param right right expression
+     */
     public Div(double left, double right) {
         this(new Num(left), new Num(right));
     }

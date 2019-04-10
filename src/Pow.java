@@ -1,40 +1,94 @@
 public class Pow extends BinaryExpression implements Expression {
     private Expression base, power;
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(Expression base, Expression power) {
         super(base, power);
         this.base = base;
         this.power = power;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(Expression base, String power) {
         this(base, new Var(power));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(Expression base, double power) {
         this(base, new Num(power));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(String base, Expression power) {
         this(new Var(base), power);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(String base, String power) {
         this(new Var(base), new Var(power));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(String base, double power) {
         this(new Var(base), new Num(power));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(double base, Expression power) {
         this(new Num(base), power);
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(double base, String power) {
         this(new Num(base), new Var(power));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param base  expression represent base
+     * @param power expression represent power
+     */
     public Pow(double base, double power) {
         this(new Num(base), new Num(power));
     }

@@ -2,15 +2,30 @@ public class Sin extends UnaryExpression implements Expression {
 
     private Expression expression;
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Sin(Expression expression) {
         super(expression);
         this.expression = expression;
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Sin(String expression) {
         this(new Var(expression));
     }
 
+    /**
+     * class constructor.
+     *
+     * @param expression expression
+     */
     public Sin(double expression) {
         this(new Num(expression));
     }

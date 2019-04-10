@@ -5,10 +5,16 @@ import java.util.Map;
 /**
  * Class BaseExpression.
  */
-abstract public class BaseExpression implements Expression {
+abstract class BaseExpression implements Expression {
 
     private Expression left, right;
 
+    /**
+     * class constructor.
+     *
+     * @param left  expression
+     * @param right expression
+     */
     BaseExpression(Expression left, Expression right) {
         this.left = left;
         this.right = right;
@@ -56,14 +62,32 @@ abstract public class BaseExpression implements Expression {
         return right;
     }
 
+    /**
+     * @param expression expression
+     * @return value of expression
+     * @throws Exception exception
+     */
     protected abstract double calculate(Expression expression) throws Exception;
 
+    /**
+     * @return true if there is no vars in expression, false otherwise.
+     */
     public boolean isNoVars() {
         return this.getVariables().isEmpty();
     }
 
-    public boolean canBeSimplified(Expression e1, Expression e2) {
-        return !e1.toString().equals(e2.toString());
+    /**
+     * this method simplify the expression and checks if the toString value is the same.
+     * if so, that means the expression can not be simplified anymore
+     *
+     * @param expression first expression
+     * @param e2         second expression. need to remove
+     * @return true if expression is not the same after simplification, means can be simplified more
+     * @throws Exception exception
+     */
+    //todo: remove e2
+    public boolean canBeSimplified(Expression expression, Expression e2) throws Exception {
+        return !expression.toString().equals(expression.simplify().toString());
     }
 
     @Override

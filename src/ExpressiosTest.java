@@ -11,7 +11,7 @@ public class ExpressiosTest {
 
 
     /**
-     * this main method test some expression cases
+     * this main method test some expression cases.
      *
      * @param args ignored
      * @throws Exception exception

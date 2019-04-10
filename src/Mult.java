@@ -109,6 +109,6 @@ public class Mult extends BinaryExpression implements Expression {
 
     @Override
     public String getSign() {
-        return "*";
+        return " * ";
     }
 }

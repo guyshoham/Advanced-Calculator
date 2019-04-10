@@ -108,6 +108,6 @@ public class Div extends BinaryExpression implements Expression {
 
     @Override
     public String getSign() {
-        return "/";
+        return " / ";
     }
 }

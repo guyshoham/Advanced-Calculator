@@ -58,30 +58,8 @@ abstract public class BaseExpression implements Expression {
 
     protected abstract double calculate(Expression expression) throws Exception;
 
-    private boolean isContainVar(String var, Expression e) {
-        List<String> variables = e.getVariables();
-        for (String variable : variables) {
-            if (variable.equals(var)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean isNoVars() {
         return this.getVariables().isEmpty();
-    }
-
-    public Expression getExpNoVars() throws Exception {
-        if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
-            left = new Num(left.evaluate());
-            this.getExpNoVars();
-        }
-        if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
-            right = new Num(left.evaluate() + right.evaluate());
-            this.getExpNoVars();
-        }
-        return this;
     }
 
     public boolean canBeSimplified(Expression e1, Expression e2) {

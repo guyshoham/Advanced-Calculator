@@ -97,11 +97,6 @@ public class Log extends BinaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        return Math.log(expression.getRight().evaluate()) / Math.log(expression.getLeft().evaluate());
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return Math.log(num.evaluate()) / Math.log(base.evaluate());
     }

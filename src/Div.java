@@ -97,14 +97,6 @@ public class Div extends BinaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        if (expression.getRight().evaluate() == 0) {
-            throw new Exception("cannot divide by zero.");
-        }
-        return expression.getLeft().evaluate() / expression.getRight().evaluate();
-    }
-
-    @Override
     public double evaluate() throws Exception {
         if (right.evaluate() == 0) {
             throw new Exception("cannot divide by zero.");

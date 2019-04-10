@@ -44,8 +44,8 @@ abstract class BaseExpression implements Expression {
             }
         }
 
-        //calculate expression without variables
-        return this.calculate(expression);
+        //evaluate expression without variables
+        return expression.evaluate();
     }
 
     /**
@@ -61,13 +61,6 @@ abstract class BaseExpression implements Expression {
     public Expression getRight() {
         return right;
     }
-
-    /**
-     * @param expression expression
-     * @return value of expression
-     * @throws Exception exception
-     */
-    protected abstract double calculate(Expression expression) throws Exception;
 
     /**
      * @return true if there is no vars in expression, false otherwise.

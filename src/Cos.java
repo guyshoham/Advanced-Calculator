@@ -34,11 +34,6 @@ public class Cos extends UnaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression e) throws Exception {
-        return Math.cos(e.getLeft().evaluate());
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return Math.cos(expression.evaluate());
     }

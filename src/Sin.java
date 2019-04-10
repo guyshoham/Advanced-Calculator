@@ -34,11 +34,6 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression e) throws Exception {
-        return Math.sin(e.getLeft().evaluate());
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return Math.sin(expression.evaluate());
     }

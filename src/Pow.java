@@ -97,11 +97,6 @@ public class Pow extends BinaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        return Math.pow(expression.getLeft().evaluate(), expression.getRight().evaluate());
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return Math.pow(base.evaluate(), power.evaluate());
     }

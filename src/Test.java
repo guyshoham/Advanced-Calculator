@@ -10,17 +10,9 @@ public class Test {
         assignment.put("z", 2.0);
         Expression e, f, g;
 
-        //((2x + y) * 4)^x
-        e = new Pow(new Mult(new Plus(new Mult(2, new Var("x")),
-                new Var("y")), 4), new Var("x"));
+        e = new Div(5, 0);
         System.out.println(e);
-
-        e = new Neg(5);
-        f = new Sin(5);
-        g = new Log(2, 2);
-        System.out.println(e);
-        System.out.println(f);
-        System.out.println(g);
+        System.out.println(e.evaluate());
 
 
        /* e = new Pow(new Plus(new Var("x"), new Var("y")), new Num(2));

@@ -97,11 +97,6 @@ public class Mult extends BinaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression expression) throws Exception {
-        return expression.getLeft().evaluate() * expression.getRight().evaluate();
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return left.evaluate() * right.evaluate();
     }

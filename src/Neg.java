@@ -34,11 +34,6 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
-    protected double calculate(Expression e) throws Exception {
-        return -1 * e.getLeft().evaluate();
-    }
-
-    @Override
     public double evaluate() throws Exception {
         return -1 * expression.evaluate();
     }

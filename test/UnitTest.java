@@ -204,6 +204,7 @@ public class UnitTest {
     @Test
     public void Simplify1() throws Exception {
         setVariables();
+        //((2*8)-6)^2 => 100
         e = new Pow(new Minus(new Mult(2, 8), 6), 2);
         String actual = e.simplify().toString();
         String expected = "100";

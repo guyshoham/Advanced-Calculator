@@ -33,6 +33,7 @@ abstract class BaseExpression implements Expression {
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         Expression expression = this;
+
         //assign all variables
         List<String> variables = this.getVariables();
         for (String variable : variables) {
@@ -77,7 +78,6 @@ abstract class BaseExpression implements Expression {
      * @return true if expression is not the same after simplification, means can be simplified more
      * @throws Exception exception
      */
-    //todo: remove e2
     public boolean canBeSimplified(Expression expression) throws Exception {
         return !expression.toString().equals(expression.simplify().toString());
     }

@@ -41,7 +41,7 @@ public class Cos extends UnaryExpression implements Expression {
     }
 
     @Override
-    public String toString() {
-        return "cos(" + expression.toString() + ")";
+    public String getSign() {
+        return "cos(";
     }
 }

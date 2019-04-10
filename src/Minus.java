@@ -101,8 +101,8 @@ public class Minus extends BinaryExpression implements Expression {
     }
 
     @Override
-    public String toString() {
-        return "(" + left.toString() + " - " + right.toString() + ")";
+    public String getSign() {
+        return "-";
     }
 }
 

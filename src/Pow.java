@@ -82,14 +82,14 @@ public class Pow extends BinaryExpression implements Expression {
     }
 
     @Override
+    public String getSign() {
+        return "^";
+    }
+
+    @Override
     public Expression assign(String var, Expression expression) {
         Expression e1 = base.assign(var, expression);
         Expression e2 = power.assign(var, expression);
         return new Pow(e1, e2);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + base.toString() + "^" + power.toString() + ")";
     }
 }

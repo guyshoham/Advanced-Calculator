@@ -66,10 +66,12 @@ public interface Expression {
     Expression getRight();
 
     /**
-     * @return true if left and right sides of expression are equal, false otherwise.
-     * @throws Exception exception.
+     * @return true if there is no vars in the expression, false otherwise.
      */
-    boolean isSidesEqual() throws Exception;
-
     boolean isNoVars();
+
+    /**
+     * @return the sign of the expression.
+     */
+    String getSign();
 }

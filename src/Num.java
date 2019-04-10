@@ -51,13 +51,13 @@ public class Num implements Expression {
     }
 
     @Override
-    public boolean isSidesEqual() {
+    public boolean isNoVars() {
         return true;
     }
 
     @Override
-    public boolean isNoVars() {
-        return true;
+    public String getSign() {
+        return "";
     }
 
     @Override

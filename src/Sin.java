@@ -41,7 +41,7 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    public String toString() {
-        return "sin(" + expression.toString() + ")";
+    public String getSign() {
+        return "sin(";
     }
 }

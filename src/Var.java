@@ -66,13 +66,13 @@ public class Var implements Expression {
     }
 
     @Override
-    public boolean isSidesEqual() {
-        return true;
+    public boolean isNoVars() {
+        return false;
     }
 
     @Override
-    public boolean isNoVars() {
-        return false;
+    public String getSign() {
+        return "";
     }
 
     @Override

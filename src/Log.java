@@ -93,7 +93,12 @@ public class Log extends BinaryExpression implements Expression {
     }
 
     @Override
+    public String getSign() {
+        return ",";
+    }
+
+    @Override
     public String toString() {
-        return "log(" + base.toString() + "," + num.toString() + ")";
+        return "log(" + base.toString() + this.getSign() + num.toString() + ")";
     }
 }

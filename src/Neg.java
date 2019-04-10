@@ -41,7 +41,7 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
-    public String toString() {
-        return "(-" + expression.toString() + ")";
+    public String getSign() {
+        return "(-";
     }
 }

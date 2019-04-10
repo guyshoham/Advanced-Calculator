@@ -25,30 +25,6 @@ abstract public class BaseExpression implements Expression {
     }
 
     @Override
-    public Expression assign(String var, Expression expression) {
-        List<String> variables;
-        if (!this.isContainVar(var, this)) {
-            return this;
-        } else {
-            variables = left.getVariables();
-            for (String variable : variables) {
-                if (variable.equals(var)) {
-                    left = left.assign(var, expression);
-                }
-            }
-            if (right != null) {
-                variables = right.getVariables();
-                for (String variable : variables) {
-                    if (variable.equals(var)) {
-                        right = right.assign(var, expression);
-                    }
-                }
-            }
-        }
-        return this;
-    }
-
-    @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         Expression expression = this;
         //assign all variables

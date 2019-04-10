@@ -152,11 +152,11 @@ public class Div extends BinaryExpression implements Expression {
         if (right.toString().equals("1")) {
             return left;
         }
-        if (canBeSimplified(left, left.simplify())) {
+        if (canBeSimplified(left)) {
             left = left.simplify();
             return this.simplify();
         }
-        if (canBeSimplified(right, right.simplify())) {
+        if (canBeSimplified(right)) {
             right = right.simplify();
             return this.simplify();
         }

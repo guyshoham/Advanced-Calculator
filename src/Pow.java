@@ -127,11 +127,11 @@ public class Pow extends BinaryExpression implements Expression {
         if (base.isNoVars() && power.isNoVars()) {
             return new Num(this.evaluate());
         }
-        if (canBeSimplified(base, base.simplify())) {
+        if (canBeSimplified(base)) {
             base = base.simplify();
             return this.simplify();
         }
-        if (canBeSimplified(power, power.simplify())) {
+        if (canBeSimplified(power)) {
             power = power.simplify();
             return this.simplify();
         }

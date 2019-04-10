@@ -143,11 +143,11 @@ public class Plus extends BinaryExpression implements Expression {
         if (left.toString().equals("0")) {
             return right;
         }
-        if (canBeSimplified(left, left.simplify())) {
+        if (canBeSimplified(left)) {
             left = left.simplify();
             return this.simplify();
         }
-        if (canBeSimplified(right, right.simplify())) {
+        if (canBeSimplified(right)) {
             right = right.simplify();
             return this.simplify();
         }

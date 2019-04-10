@@ -138,11 +138,11 @@ public class Log extends BinaryExpression implements Expression {
         if (base.toString().equals(num.toString())) {
             return new Num(1);
         }
-        if (canBeSimplified(base, base.simplify())) {
+        if (canBeSimplified(base)) {
             base = base.simplify();
             return this.simplify();
         }
-        if (canBeSimplified(num, num.simplify())) {
+        if (canBeSimplified(num)) {
             num = num.simplify();
             return this.simplify();
         }

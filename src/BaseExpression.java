@@ -81,12 +81,11 @@ abstract class BaseExpression implements Expression {
      * if so, that means the expression can not be simplified anymore
      *
      * @param expression first expression
-     * @param e2         second expression. need to remove
      * @return true if expression is not the same after simplification, means can be simplified more
      * @throws Exception exception
      */
     //todo: remove e2
-    public boolean canBeSimplified(Expression expression, Expression e2) throws Exception {
+    public boolean canBeSimplified(Expression expression) throws Exception {
         return !expression.toString().equals(expression.simplify().toString());
     }
 

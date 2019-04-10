@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class Var.
+ */
 public class Var implements Expression {
 
     private String var;

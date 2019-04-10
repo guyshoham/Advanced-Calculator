@@ -1,3 +1,6 @@
+/**
+ * Class Minus.
+ */
 public class Minus extends BinaryExpression implements Expression {
     private Expression left, right;
 

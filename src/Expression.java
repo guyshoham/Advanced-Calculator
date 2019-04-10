@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Expression Interface.
+ * Interface Expression.
  */
 public interface Expression {
     /**

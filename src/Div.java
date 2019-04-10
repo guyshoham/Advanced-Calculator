@@ -1,3 +1,6 @@
+/**
+ * Class Div.
+ */
 public class Div extends BinaryExpression implements Expression {
     private Expression left, right;
 

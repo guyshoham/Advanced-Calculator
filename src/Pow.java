@@ -1,3 +1,6 @@
+/**
+ * Class Pow.
+ */
 public class Pow extends BinaryExpression implements Expression {
     private Expression base, power;
 

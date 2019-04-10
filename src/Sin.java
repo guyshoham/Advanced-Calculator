@@ -1,3 +1,6 @@
+/**
+ * Class Sin.
+ */
 public class Sin extends UnaryExpression implements Expression {
 
     private Expression expression;

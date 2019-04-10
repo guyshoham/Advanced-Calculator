@@ -1,5 +1,6 @@
-import java.util.Map;
-
+/**
+ * Class Mult.
+ */
 public class Mult extends BinaryExpression implements Expression {
     private Expression left, right;
 
@@ -93,11 +94,6 @@ public class Mult extends BinaryExpression implements Expression {
      */
     public Mult(double left, double right) {
         this(new Num(left), new Num(right));
-    }
-
-    @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return 0;
     }
 
     @Override

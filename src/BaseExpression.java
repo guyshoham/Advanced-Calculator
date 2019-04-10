@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class BaseExpression.
+ */
 abstract public class BaseExpression implements Expression {
 
     private Expression left, right;
@@ -63,10 +66,16 @@ abstract public class BaseExpression implements Expression {
         return this.calculate(expression);
     }
 
+    /**
+     * @return left expression.
+     */
     public Expression getLeft() {
         return left;
     }
 
+    /**
+     * @return right expression.
+     */
     public Expression getRight() {
         return right;
     }

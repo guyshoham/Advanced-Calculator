@@ -1,5 +1,5 @@
 /**
- * Plus Class.
+ * Class Plus.
  */
 public class Plus extends BinaryExpression implements Expression {
 

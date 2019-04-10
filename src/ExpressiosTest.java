@@ -1,12 +1,21 @@
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Class ExpressiosTest.
+ */
 public class ExpressiosTest {
 
     private static final double E = 2.71;
     private static final double PI = Math.PI;
 
 
+    /**
+     * this main method test some expression cases
+     *
+     * @param args ignored
+     * @throws Exception exception
+     */
     public static void main(String[] args) throws Exception {
         Map<String, Double> assignment = new TreeMap<>();
         assignment.put("x", 2.0);

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class Num.
+ */
 public class Num implements Expression {
 
     private double num;

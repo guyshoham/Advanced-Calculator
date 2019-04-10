@@ -1,3 +1,6 @@
+/**
+ * Class Cos.
+ */
 public class Cos extends UnaryExpression implements Expression {
 
     private Expression expression;

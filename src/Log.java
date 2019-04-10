@@ -1,3 +1,6 @@
+/**
+ * Class Log.
+ */
 public class Log extends BinaryExpression implements Expression {
     private Expression base, num;
 

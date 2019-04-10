@@ -1,3 +1,6 @@
+/**
+ * Class Neg.
+ */
 public class Neg extends UnaryExpression implements Expression {
 
     private Expression expression;

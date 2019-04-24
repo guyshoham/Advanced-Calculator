@@ -99,7 +99,7 @@ public class Div extends BinaryExpression implements Expression {
     @Override
     public double evaluate() throws Exception {
         if (right.evaluate() == 0) {
-            throw new Exception("cannot divide by zero.");
+            throw new RuntimeException("cannot divide by zero.");
         }
         return left.evaluate() / right.evaluate();
     }

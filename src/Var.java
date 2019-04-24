@@ -23,13 +23,13 @@ public class Var implements Expression {
         if (assignment.containsKey(var)) {
             return assignment.get(var);
         } else {
-            throw new Exception("cannot evaluate expression, too many variables.");
+            throw new Exception("cannot evaluate expression with variables.");
         }
     }
 
     @Override
     public double evaluate() throws Exception {
-        throw new Exception("cannot evaluate expression, too many variables.");
+        throw new Exception("cannot evaluate expression with variables.");
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Var implements Expression {
         if (string.equals(this.var)) {
             return new Num(1);
         } else {
-            return this;
+            return new Num(0);
         }
     }
 

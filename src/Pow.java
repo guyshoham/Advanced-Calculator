@@ -103,6 +103,9 @@ public class Pow extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
+        if (base.toString().equals("e") && power.toString().equals(var)) {
+            return this;
+        }
         return new Mult(power, new Pow(base, new Minus(power, 1)));
     }
 

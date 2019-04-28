@@ -49,7 +49,7 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() throws Exception {
+    public Expression simplify() {
         return new Neg(expression.simplify());
     }
 

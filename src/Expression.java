@@ -11,7 +11,7 @@ public interface Expression {
      *
      * @param assignment assignment
      * @return the result
-     * @throws Exception exception
+     * @throws Exception if one or more of the variables in expression has not been assigned
      */
     double evaluate(Map<String, Double> assignment) throws Exception;
 
@@ -20,7 +20,7 @@ public interface Expression {
      * but uses an empty assignment.
      *
      * @return the result
-     * @throws Exception exception
+     * @throws Exception if cannot evaluate expression (because of arithmetic rules)
      */
     double evaluate() throws Exception;
 
@@ -51,19 +51,8 @@ public interface Expression {
 
     /**
      * @return a simplified version of the current expression.
-     * @throws Exception e
      */
-    Expression simplify() throws Exception;
-
-    /**
-     * @return left expression
-     */
-    Expression getLeft();
-
-    /**
-     * @return right expression
-     */
-    Expression getRight();
+    Expression simplify();
 
     /**
      * @return true if there is no vars in the expression, false otherwise.

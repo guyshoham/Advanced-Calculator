@@ -120,34 +120,39 @@ public class Log extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() throws Exception {
-        //base is only one num
-        if (base.isNoVars() && !base.getClass().getTypeName().equals("Num")) {
-            base = new Num(base.evaluate());
-            return this.simplify();
+    public Expression simplify() {
+        try {
+            //base is only one num
+            if (base.isNoVars() && !base.getClass().getTypeName().equals("Num")) {
+                base = new Num(base.evaluate());
+                return this.simplify();
+            }
+            //num is only one num
+            if (num.isNoVars() && !num.getClass().getTypeName().equals("Num")) {
+                num = new Num(num.evaluate());
+                return this.simplify();
+            }
+            //base and power has no vars
+            if (base.isNoVars() && num.isNoVars()) {
+                return new Num(this.evaluate());
+            }
+            //log(x,x) = 1
+            if (base.toString().equals(num.toString())) {
+                return new Num(1);
+            }
+            if (canBeSimplified(base)) {
+                base = base.simplify();
+                return this.simplify();
+            }
+            if (canBeSimplified(num)) {
+                num = num.simplify();
+                return this.simplify();
+            }
+            return new Log(base.simplify(), num.simplify());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        //num is only one num
-        if (num.isNoVars() && !num.getClass().getTypeName().equals("Num")) {
-            num = new Num(num.evaluate());
-            return this.simplify();
-        }
-        //base and power has no vars
-        if (base.isNoVars() && num.isNoVars()) {
-            return new Num(this.evaluate());
-        }
-        //log(x,x) = 1
-        if (base.toString().equals(num.toString())) {
-            return new Num(1);
-        }
-        if (canBeSimplified(base)) {
-            base = base.simplify();
-            return this.simplify();
-        }
-        if (canBeSimplified(num)) {
-            num = num.simplify();
-            return this.simplify();
-        }
-        return new Log(base.simplify(), num.simplify());
     }
 
     @Override

@@ -49,7 +49,7 @@ public class Sin extends UnaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() throws Exception {
+    public Expression simplify() {
         return new Sin(expression.simplify());
     }
 

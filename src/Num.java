@@ -49,16 +49,6 @@ public class Num implements Expression {
     }
 
     @Override
-    public Expression getLeft() {
-        return new Num(num);
-    }
-
-    @Override
-    public Expression getRight() {
-        return new Num(num);
-    }
-
-    @Override
     public boolean isNoVars() {
         return true;
     }

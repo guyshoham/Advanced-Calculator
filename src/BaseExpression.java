@@ -54,23 +54,8 @@ abstract class BaseExpression implements Expression {
             return expression.evaluate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return 0;
         }
-
-        return 0;
-    }
-
-    /**
-     * @return left expression.
-     */
-    public Expression getLeft() {
-        return left;
-    }
-
-    /**
-     * @return right expression.
-     */
-    public Expression getRight() {
-        return right;
     }
 
     /**

@@ -115,38 +115,43 @@ public class Plus extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() throws Exception {
-        //left is only one num
-        if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
-            left = new Num(left.evaluate());
-            return this.simplify();
+    public Expression simplify() {
+        try {
+            //left is only one num
+            if (left.isNoVars() && !left.getClass().getTypeName().equals("Num")) {
+                left = new Num(left.evaluate());
+                return this.simplify();
+            }
+            //right is only one num
+            if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
+                right = new Num(right.evaluate());
+                return this.simplify();
+            }
+            //left and right has no vars
+            if (left.isNoVars() && right.isNoVars()) {
+                return new Num(left.evaluate() + right.evaluate());
+            }
+            //X + 0 = X
+            if (right.toString().equals("0")) {
+                return left;
+            }
+            //0 + X = X
+            if (left.toString().equals("0")) {
+                return right;
+            }
+            if (canBeSimplified(left)) {
+                left = left.simplify();
+                return this.simplify();
+            }
+            if (canBeSimplified(right)) {
+                right = right.simplify();
+                return this.simplify();
+            }
+            return new Plus(left.simplify(), right.simplify());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        //right is only one num
-        if (right.isNoVars() && !right.getClass().getTypeName().equals("Num")) {
-            right = new Num(right.evaluate());
-            return this.simplify();
-        }
-        //left and right has no vars
-        if (left.isNoVars() && right.isNoVars()) {
-            return new Num(left.evaluate() + right.evaluate());
-        }
-        //X + 0 = X
-        if (right.toString().equals("0")) {
-            return left;
-        }
-        //0 + X = X
-        if (left.toString().equals("0")) {
-            return right;
-        }
-        if (canBeSimplified(left)) {
-            left = left.simplify();
-            return this.simplify();
-        }
-        if (canBeSimplified(right)) {
-            right = right.simplify();
-            return this.simplify();
-        }
-        return new Plus(left.simplify(), right.simplify());
     }
 
     @Override

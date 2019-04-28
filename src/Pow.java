@@ -113,30 +113,35 @@ public class Pow extends BinaryExpression implements Expression {
     }
 
     @Override
-    public Expression simplify() throws Exception {
-        //base is only one num
-        if (base.isNoVars() && !base.getClass().getTypeName().equals("Num")) {
-            base = new Num(base.evaluate());
-            return this.simplify();
+    public Expression simplify() {
+        try {
+            //base is only one num
+            if (base.isNoVars() && !base.getClass().getTypeName().equals("Num")) {
+                base = new Num(base.evaluate());
+                return this.simplify();
+            }
+            //power is only one num
+            if (power.isNoVars() && !power.getClass().getTypeName().equals("Num")) {
+                power = new Num(power.evaluate());
+                return this.simplify();
+            }
+            //base and power has no vars
+            if (base.isNoVars() && power.isNoVars()) {
+                return new Num(this.evaluate());
+            }
+            if (canBeSimplified(base)) {
+                base = base.simplify();
+                return this.simplify();
+            }
+            if (canBeSimplified(power)) {
+                power = power.simplify();
+                return this.simplify();
+            }
+            return new Pow(base.simplify(), power.simplify());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        //power is only one num
-        if (power.isNoVars() && !power.getClass().getTypeName().equals("Num")) {
-            power = new Num(power.evaluate());
-            return this.simplify();
-        }
-        //base and power has no vars
-        if (base.isNoVars() && power.isNoVars()) {
-            return new Num(this.evaluate());
-        }
-        if (canBeSimplified(base)) {
-            base = base.simplify();
-            return this.simplify();
-        }
-        if (canBeSimplified(power)) {
-            power = power.simplify();
-            return this.simplify();
-        }
-        return new Pow(base.simplify(), power.simplify());
     }
 
     @Override

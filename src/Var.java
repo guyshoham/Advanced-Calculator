@@ -63,17 +63,6 @@ public class Var implements Expression {
     }
 
     @Override
-    public Expression getLeft() {
-        return new Var(var);
-
-    }
-
-    @Override
-    public Expression getRight() {
-        return new Var(var);
-    }
-
-    @Override
     public boolean isNoVars() {
         return false;
     }

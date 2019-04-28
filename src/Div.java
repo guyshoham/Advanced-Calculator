@@ -154,8 +154,7 @@ public class Div extends BinaryExpression implements Expression {
                 return this.simplify();
             }
             return new Div(left.simplify(), right.simplify());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }

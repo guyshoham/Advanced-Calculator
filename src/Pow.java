@@ -98,6 +98,9 @@ public class Pow extends BinaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
+        if (base.evaluate() < 0 && power.evaluate() > 0 && power.evaluate() < 1) {
+            throw new RuntimeException("if power is between 0-1, base mustn't be negative");
+        }
         return Math.pow(base.evaluate(), power.evaluate());
     }
 

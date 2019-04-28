@@ -10,14 +10,23 @@ public class Test {
         assignment.put("z", 2.0);
         Expression e, f, g;
 
-       /* e = new Div(5, 0);
+        e = new Plus("x", new Plus("y", "z"));
+        f = new Pow(-6, 0.3);
+        g = new Log(5, -5);
+
+        System.out.println(f);
+        System.out.println(f.evaluate(assignment));
+        System.out.println(g);
+        System.out.println(g.evaluate(assignment));
+
+        /*e = new Div(5, 0);
         System.out.println(e);
         System.out.println(e.evaluate(assignment));*/
 
-        e = new Pow("e", "x");
+       /* e = new Pow("e", "x");
         System.out.println(e);
         System.out.println(e.differentiate("x"));
-        System.out.println(e.differentiate("x").simplify());
+        System.out.println(e.differentiate("x").simplify());*/
 
         /*e = new Sin(new Mult(4, "x"));
         System.out.println(e.differentiate("x"));

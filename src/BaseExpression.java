@@ -37,16 +37,26 @@ abstract class BaseExpression implements Expression {
         //assign all variables
         List<String> variables = this.getVariables();
         for (String variable : variables) {
-            for (String s : assignment.keySet()) {
-                if (variable.equals(s)) {
-                    double d = assignment.get(s);
-                    expression = expression.assign(variable, new Num(d));
+            for (String key : assignment.keySet()) {
+                if (variable.equals(key)) {
+                    double value = assignment.get(key);
+                    expression = expression.assign(variable, new Num(value));
                 }
             }
         }
 
+        if (!expression.isNoVars()) {
+            throw new RuntimeException("one or more of the variables has not been assigned");
+        }
+
         //evaluate expression without variables
-        return expression.evaluate();
+        try {
+            return expression.evaluate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return 0;
     }
 
     /**

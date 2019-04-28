@@ -99,10 +99,10 @@ public class Log extends BinaryExpression implements Expression {
     @Override
     public double evaluate() throws Exception {
         if (num.evaluate() <= 0) {
-            throw new RuntimeException("log cannot evaluates a negative number or zero.");
+            throw new Exception("log cannot evaluates a negative number or zero.");
         }
         if (base.evaluate() <= 1) {
-            throw new RuntimeException("base of log must be higher than 1.");
+            throw new Exception("base of log must be higher than 1.");
         }
         return Math.log(num.evaluate()) / Math.log(base.evaluate());
     }

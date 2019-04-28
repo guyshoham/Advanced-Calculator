@@ -46,7 +46,7 @@ abstract class BaseExpression implements Expression {
         }
 
         if (!expression.isNoVars()) {
-            throw new RuntimeException("one or more of the variables has not been assigned");
+            throw new Exception("one or more of the variables has not been assigned");
         }
 
         //evaluate expression without variables
